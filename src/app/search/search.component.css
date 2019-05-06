@@ -2,21 +2,18 @@ body {
   background: #aaaaaa;
   font-family: helvetica;
   margin: 50px;
-
 }
 
 .search-bar {
   height: 44px;
+  position: relative;
+  margin: 12px auto;
   width: 220px;
   border-radius: 40px;
   display: flex;
   align-items: center;
   padding: 0 0 0 20px;
-  position: relative;
   background: #fff;
-  top: 150px;
-  left: 525px;
-
 }
 
 .input {
@@ -90,3 +87,5 @@ body {
   width: 150px;
   transition: all 1s ease;
 }
+
+

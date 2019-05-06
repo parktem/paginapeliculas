@@ -7,21 +7,21 @@
     />
   </symbol>
 </svg>
-
-<div class="search-bar">
-  <input type="text" class="input" placeholder="&nbsp;" #film />
-  <span class="label">¿Qué quieres buscar?</span>
-  <span class="highlight"></span>
-  <div class="search-btn">
-    <svg (click)="searchFilm(film.value)" class="icon icon-18">
-      <use xlink:href="#magnify"></use>
-    </svg>
-  </div>
-</div>
-<br>
 <div class="container">
   <div class="row">
-    <div class="col-4" *ngFor="let film of films">
+    <div class="search-bar">
+      <input type="text" class="input" placeholder="&nbsp;" #film />
+      <span class="label">¿Qué quieres buscar?</span>
+      <span class="highlight"></span>
+      <div (click)="searchFilm(film.value)" class="search-btn">
+        <svg class="icon icon-18">
+          <use xlink:href="#magnify"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let film of films">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="{{film.poster}}">
         <div class="card-body">
