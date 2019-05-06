@@ -2,14 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Film } from '../Film.model';
 
-export interface Order {
-  title: string;
-}
-
-interface ResponseOrders {
-  results: Order[];
-}
-
 @Injectable({
   providedIn: 'root'
 })
