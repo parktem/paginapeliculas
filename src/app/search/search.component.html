@@ -19,14 +19,15 @@
   </div>
 </div>
 <br>
-<div *ngFor="let film of films">
-  <p-card header="{{film.title}}" subheader="{{film.type}} || {{film.year}}" [style]="{width: '100px'}" styleClass="ui-card-shadow">
-    <p-header>
-        <img src="Card" src="{{film.poster}}" style="width: 100px;">
-    </p-header>
-    <p-footer>
-
-    </p-footer>
-    <div>adas</div>
-  </p-card>
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let film of films">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{film.poster}}">
+        <div class="card-body">
+          <h5 class="card-title"><b>{{film.title}}</b> || {{film.year}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
