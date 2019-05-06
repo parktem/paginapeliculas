@@ -1,0 +1,8 @@
+.pepita{
+  display: block;
+    background-image: url(http://localhost:4200/assets/w1.jpg) !important;
+    height: 71vw !important;
+    /* width: 100% !important; */
+    background-size: cover;
+}
+/*box-shadow: inset 0 16px 16px -16px rgba(77,75,72,0.8)*/
