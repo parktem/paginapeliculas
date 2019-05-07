@@ -3,10 +3,6 @@ body {
   margin: 50px;
 }
 
-.prueba {
-  background-image: linear-gradient(to right, #626c7c, #2b2f36)
-}
-
 .search-bar {
   height: 44px;
   position: relative;

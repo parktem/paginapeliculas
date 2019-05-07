@@ -8,7 +8,6 @@ import { CardModule } from 'primeng/card';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { SearchComponent } from './search/search.component';
-import { ShowComponent } from './show/show.component';
 import { ListComponent } from './list/list.component';
 
 const appRoutes: Routes = [
@@ -17,7 +16,7 @@ const appRoutes: Routes = [
 ]
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, SearchComponent, ShowComponent, ListComponent],
+  declarations: [AppComponent, NavComponent, SearchComponent, ListComponent],
   imports: [BrowserModule, HttpClientModule, CardModule, RouterModule.forRoot(appRoutes)],
   providers: [],
 bootstrap: [AppComponent]

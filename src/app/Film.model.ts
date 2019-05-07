@@ -1,15 +1,19 @@
 export class Film {
-  poster: string;
+  adult: string;
+  overview: string;
+  releaseDate: string;
+  voteCount: string;
+  id: string;
+  video: string;
+  voteAverage: string;
   title: string;
-  type: string;
-  year: string;
-  imdbID: string;
+  popularity: string;
+  posterPath: string;
+  originalLanguage: string;
+  originalTitle: string;
+  genreIds: string[];
+  backdropPath: string;
 
-  constructor(title: string, type: string, year: string, poster: string, imdbID: string) {
-    this.poster = poster;
-    this.title = title;
-    this.type = type;
-    this.year = year;
-    this.imdbID = imdbID;
-  }
+  constructor() {}
+
 }

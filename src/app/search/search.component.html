@@ -23,9 +23,9 @@
   <div class="row">
     <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let film of films">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{film.poster}}">
+        <img class="card-img-top" src="{{film.posterPath}}">
         <div class="card-body">
-          <h5 class="card-title"><b>{{film.title}}</b><br><span class="card-year">{{film.year}}</span></h5>
+          <h5 class="card-title"><b>{{film.title}}</b><br><span class="card-year">{{film.releaseDate | date:"yyyy"}}</span></h5>
         </div>
       </div>
     </div>
