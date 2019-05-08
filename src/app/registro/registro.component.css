@@ -1,0 +1,9 @@
+.form-box {
+  padding: 50px;
+}
+
+.form-box button{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%)
+}

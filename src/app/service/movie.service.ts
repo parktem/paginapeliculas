@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Film } from '../Film.model';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,12 @@ export class MovieService {
   apiKey = '20005b2e19e01b863d44227dffe11c0d';
   url = 'https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey;
 
-  constructor(private http: HttpClient) {
-    console.log('Se inicializa')
-  }
-
-  prueba(title: string) {
-    console.log('entra a prueba');
-  }
+  constructor(private http: HttpClient) {}
 
   search(title: string): Film[] {
     const films: Film[] = [];
     this.http.get(this.url + '&query=' + encodeURI(title) + '&language=es').subscribe(data => {
       Object.values(data['results']).forEach(element => {
-        console.log('ELEMENTS', element);
         let film = new Film();
         film.title = element['title'];
         film.adult = element['adult'];
@@ -44,6 +38,13 @@ export class MovieService {
     });
     console.log(films);
     return films;
+   }
+
+   registroUsuario(email: string, password: string) {
+     firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch(
+        error => console.log(error)
+      )
    }
 }
 

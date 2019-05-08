@@ -5,3 +5,8 @@ img{
 nav{
   height: 40px;
 }
+
+.right {
+  position: absolute;
+  right: 10px;
+}

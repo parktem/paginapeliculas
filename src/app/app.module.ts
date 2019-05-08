@@ -4,8 +4,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
-import {MatDialogModule} from '@angular/material/dialog';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { FirebaseApp } from '@angular/fire';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -17,12 +19,15 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 
 const appRoutes: Routes = [
   { path: '', component: SearchComponent },
-  { path: 'list', component: ListComponent }
+  { path: 'list', component: ListComponent },
+  { path: 'registro', component: RegistroComponent }
 ]
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, SearchComponent, ListComponent, ModalComponent, RegistroComponent, InicioSesionComponent],
-  imports: [BrowserModule, HttpClientModule, CardModule, MatDialogModule, BrowserAnimationsModule, RouterModule.forRoot(appRoutes)],
+  declarations: [AppComponent, NavComponent, SearchComponent,
+    ListComponent, ModalComponent, RegistroComponent, InicioSesionComponent],
+  imports: [FormsModule, BrowserModule, HttpClientModule, CardModule, MatDialogModule,
+    BrowserAnimationsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   entryComponents: [ModalComponent],
 bootstrap: [AppComponent]
