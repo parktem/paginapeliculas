@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalComponent } from '../modal/modal.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list',
@@ -10,16 +8,9 @@ import { MatDialog } from '@angular/material/dialog';
 export class ListComponent implements OnInit {
 
 
-  constructor(private dialog: MatDialog) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  openDialog() {
-    let dialogRef = this.dialog.open(ModalComponent, {
-      height: '400px',
-      width: '600px',
-    });
   }
 
 }

@@ -12,6 +12,8 @@ import { NavComponent } from './nav/nav.component';
 import { SearchComponent } from './search/search.component';
 import { ListComponent } from './list/list.component';
 import { ModalComponent } from './modal/modal.component';
+import { RegistroComponent } from './registro/registro.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 
 const appRoutes: Routes = [
   { path: '', component: SearchComponent },
@@ -19,7 +21,7 @@ const appRoutes: Routes = [
 ]
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, SearchComponent, ListComponent, ModalComponent],
+  declarations: [AppComponent, NavComponent, SearchComponent, ListComponent, ModalComponent, RegistroComponent, InicioSesionComponent],
   imports: [BrowserModule, HttpClientModule, CardModule, MatDialogModule, BrowserAnimationsModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   entryComponents: [ModalComponent],
