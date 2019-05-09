@@ -10,10 +10,10 @@
 <div class="container">
   <div class="row">
     <div class="search-bar">
-      <input type="text" class="input" placeholder="&nbsp;" #film />
+      <input type="text" class="input" [(ngModel)]="title" placeholder="&nbsp;" />
       <span class="label">¿Qué quieres buscar?</span>
       <span class="highlight"></span>
-      <div (click)="searchFilm(film.value)" class="search-btn">
+      <div (click)="searchFilm()" class="search-btn">
         <svg class="icon icon-18">
           <use xlink:href="#magnify"></use>
         </svg>

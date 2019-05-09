@@ -13,14 +13,21 @@ import { MatDialog } from '@angular/material/dialog';
 export class SearchComponent implements OnInit {
 
   films: Film[] = [];
+  title: string;
 
-  constructor(private service: MovieService, private dialog: MatDialog) { }
-
-  ngOnInit() {
+  constructor(private service: MovieService, private dialog: MatDialog) {
   }
 
-  searchFilm(film: string) {
-    this.films = this.service.search(film);
+  ngOnInit() {
+    /* Get films */
+    this.films = this.service.films;
+    this.title = this.service.title;
+  }
+
+  searchFilm() {
+    if (this.title) {
+      this.films = this.service.search(this.title);
+    }
   }
 
   openDialog() {

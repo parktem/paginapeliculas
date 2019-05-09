@@ -12,11 +12,13 @@ export class MovieService {
   urlImage = 'https://image.tmdb.org/t/p/w500';
   apiKey = '20005b2e19e01b863d44227dffe11c0d';
   url = 'https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey;
+  films: Film[] = [];
+  title: string;
 
   constructor(private http: HttpClient) {}
 
   search(title: string): Film[] {
-    const films: Film[] = [];
+    this.title = title;
     this.http.get(this.url + '&query=' + encodeURI(title) + '&language=es').subscribe(data => {
       Object.values(data['results']).forEach(element => {
         const film = new Film();
@@ -34,12 +36,10 @@ export class MovieService {
         film.video = element['video'];
         film.voteCount = element['vote_count'];
         film.voteAverage = element['vote_average'];
-        films.push(film);
+        this.films.push(film);
       });
     });
-    console.log(films);
-    console.log(this.tokenUser);
-    return films;
+    return this.films;
    }
 
   registroUsuario(email: string, password: string) {
