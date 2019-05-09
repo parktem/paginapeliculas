@@ -9,16 +9,26 @@ import { MovieService } from '../service/movie.service';
 })
 export class RegistroComponent implements OnInit {
 
+  correctData: boolean = false;
+
   constructor(private authService: MovieService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSignup(form: NgForm) {
-    console.log(form.value.email);
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.registroUsuario(email, password);
+    const secondPassword = form.value.secondPassword;
+    if (this.checkData(email, password, secondPassword)) {
+      this.authService.registroUsuario(email, password);
+    } else {
+      this.correctData = true;
+    }
+
+  }
+
+  checkData(email: string, password: string, secondPassword: string): boolean {
+    return password === secondPassword ? true : false;
   }
 
 }

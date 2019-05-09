@@ -6,7 +6,6 @@ import { NgForm } from '@angular/forms';
   selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
   styleUrls: ['./inicio-sesion.component.css'],
-  providers: [MovieService]
 })
 export class InicioSesionComponent implements OnInit {
 

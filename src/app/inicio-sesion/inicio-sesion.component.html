@@ -1,17 +1,20 @@
-<div class="container">
-  <div class="row">
-    <div class="form-box offset-2 col-8">
-      <form (ngSubmit)="onSignin(form)" #form="ngForm">
-        <div class="form-group">
-          <label for="email">Mail</label>
-          <input type="email" id="email" name="email" ngModel class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" ngModel class="form-control">
-        </div>
-        <button class="btn btn-primary" type="submit">Sign Up</button>
-      </form>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <br>
+    </div>
+    <form (ngSubmit)="onSignin(form)" #form="ngForm">
+      <input type="text" id="login" class="fadeIn second" name="email" placeholder="Correo electrónico" ngModel>
+      <input type="password" id="login" class="fadeIn third" name="password" placeholder="Contraseña" ngModel>
+      <input type="submit" class="fadeIn fourth" value="Acceder">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" [routerLink]="['/acceso']">¿Has olvidado la contraseña?</a>
     </div>
   </div>
 </div>

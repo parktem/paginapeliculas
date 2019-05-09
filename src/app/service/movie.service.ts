@@ -50,6 +50,7 @@ export class MovieService {
   }
 
   inicioSesionUsuario(email: string, password: string) {
+    //firebase.auth().sendPasswordResetEmail(email);
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         response => {
