@@ -16,11 +16,13 @@ import { ListComponent } from './list/list.component';
 import { ModalComponent } from './modal/modal.component';
 import { RegistroComponent } from './registro/registro.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { MovieService } from './service/movie.service';
 
 const appRoutes: Routes = [
   { path: '', component: SearchComponent },
   { path: 'list', component: ListComponent },
-  { path: 'registro', component: RegistroComponent }
+  { path: 'registro', component: RegistroComponent },
+  { path: 'acceso', component: InicioSesionComponent }
 ]
 
 @NgModule({
@@ -28,7 +30,7 @@ const appRoutes: Routes = [
     ListComponent, ModalComponent, RegistroComponent, InicioSesionComponent],
   imports: [FormsModule, BrowserModule, HttpClientModule, CardModule, MatDialogModule,
     BrowserAnimationsModule, RouterModule.forRoot(appRoutes)],
-  providers: [],
+  providers: [MovieService],
   entryComponents: [ModalComponent],
 bootstrap: [AppComponent]
 })

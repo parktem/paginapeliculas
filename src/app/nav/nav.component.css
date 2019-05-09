@@ -6,7 +6,12 @@ nav{
   height: 40px;
 }
 
-.right {
+.right-second {
   position: absolute;
   right: 10px;
+}
+
+.right-first {
+  position: absolute;
+  right: 105px;
 }
