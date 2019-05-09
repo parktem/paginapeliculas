@@ -19,6 +19,7 @@ export class MovieService {
 
   search(title: string): Film[] {
     this.title = title;
+    this.films = [];
     this.http.get(this.url + '&query=' + encodeURI(title) + '&language=es').subscribe(data => {
       Object.values(data['results']).forEach(element => {
         const film = new Film();

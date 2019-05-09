@@ -3,15 +3,18 @@ img{
 }
 
 nav{
+  position: fixed;
+  z-index: 1;
+  width: 100%;
   height: 40px;
 }
 
 .right-second {
-  position: absolute;
+  position: fixed;
   right: 10px;
 }
 
 .right-first {
-  position: absolute;
+  position: fixed;
   right: 105px;
 }

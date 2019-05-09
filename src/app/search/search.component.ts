@@ -25,9 +25,8 @@ export class SearchComponent implements OnInit {
   }
 
   searchFilm() {
-    if (this.title) {
-      this.films = this.service.search(this.title);
-    }
+    console.log(this.title);
+    this.films = this.service.search(this.title);
   }
 
   openDialog() {
@@ -45,6 +44,13 @@ export class SearchComponent implements OnInit {
       }
     ); */
     this.service.getToken();
+  }
+
+  addBackground() {
+    if(this.films.length > 0) {
+      const element = document.getElementById('navbarNav');
+      element.classList.add('bg-dark');
+    }
   }
 
 }
