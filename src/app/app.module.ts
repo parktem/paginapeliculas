@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     ListComponent, ModalComponent, RegistroComponent, InicioSesionComponent],
   imports: [FormsModule, BrowserModule, HttpClientModule, CardModule, MatDialogModule,
     BrowserAnimationsModule, RouterModule.forRoot(appRoutes)],
-  providers: [MovieService],
+    /* providers: [MovieService], */
   entryComponents: [ModalComponent],
 bootstrap: [AppComponent]
 })

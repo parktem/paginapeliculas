@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Film } from '../Film.model';
 import * as firebase from 'firebase/app';
+import { AppService } from './app.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class MovieService {
   films: Film[] = [];
   title: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private appService: AppService) {}
 
   search(title: string): Film[] {
     this.title = title;
@@ -60,6 +61,7 @@ export class MovieService {
             (token: string) => {
               console.log('TOKEN:', token),
               this.tokenUser = token;
+              this.appService.showAccess.next(false);
             }
             );
           }
