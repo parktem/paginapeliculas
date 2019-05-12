@@ -8,10 +8,10 @@ import { AppService } from '../service/app.service';
 })
 export class NavComponent implements OnInit {
 
+
   constructor(private appService: AppService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   showAccess() {
     this.appService.showAccess.next(true);

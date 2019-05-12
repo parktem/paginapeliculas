@@ -78,6 +78,10 @@ export class MovieService {
     return this.http.put('https://paginapeliculas-d7a99.firebaseio.com/data.json?auth=' + token, idFilm);
   }
 
+  recoveryPassword(email: string) {
+    firebase.auth().sendPasswordResetEmail(email);
+  }
+
   getToken() {
     firebase.auth().currentUser.getIdToken()
     .then(

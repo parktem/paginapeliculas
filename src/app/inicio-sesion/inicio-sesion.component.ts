@@ -26,4 +26,8 @@ export class InicioSesionComponent implements OnInit {
     this.appService.showAccess.next(false);
   }
 
+  recoveryPassword(email: string) {
+    this.authService.recoveryPassword(email);
+  }
+
 }
