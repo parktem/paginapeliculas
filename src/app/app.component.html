@@ -1,3 +1,6 @@
 <app-nav></app-nav>
+<div class="fadeInDown alert alert-{{notification.type}}">
+  {{notification.message}}
+</div>
 <app-inicio-sesion *ngIf="showAccess"></app-inicio-sesion>
 <router-outlet></router-outlet>

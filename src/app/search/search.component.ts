@@ -36,14 +36,12 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  saveFilm(idFilm: object) {
-    /* this.service.saveFilm(String(idFilm))
-    .subscribe(
-      (response: Response) => {
-        console.log(response);
-      }
-    ); */
-    this.service.getToken();
+  saveFilm(idFilm: string) {
+    this.service.saveFilm(idFilm);
+  }
+
+  removeFilm(idFilm: string) {
+    this.service.removeFilm(idFilm);
   }
 
   addBackground() {

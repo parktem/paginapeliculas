@@ -1,4 +1,5 @@
 export class Film {
+  added: boolean;
   adult: string;
   overview: string;
   releaseDate: string;

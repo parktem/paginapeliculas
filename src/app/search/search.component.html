@@ -22,8 +22,10 @@
   </div>
   <div class="row">
     <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let film of films">
-      <div class="card" style="width: 18rem;" (click)="saveFilm(card.id)" id="{{film.id}}" #card>
+      <div class="card" style="width: 18rem;" id="{{film.id}}" #card>
         <img class="card-img-top" src="{{film.posterPath}}">
+        <button class="btn btn-success" *ngIf="!film.added" (click)="saveFilm(card.id)">Añadir a lista</button>
+        <button class="btn btn-danger" *ngIf="film.added" (click)="removeFilm(card.id)">Quitar de la lista</button>
         <div class="card-body">
           <h5 class="card-title"><b>{{film.title}}</b><br><span class="card-year">{{film.releaseDate | date:"yyyy"}}</span></h5>
         </div>

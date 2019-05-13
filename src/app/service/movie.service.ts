@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Film } from '../Film.model';
 import * as firebase from 'firebase/app';
 import { AppService } from './app.service';
@@ -12,16 +12,18 @@ export class MovieService {
   tokenUser: string;
   urlImage = 'https://image.tmdb.org/t/p/w500';
   apiKey = '20005b2e19e01b863d44227dffe11c0d';
-  url = 'https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey;
+  urlTMDB = 'https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey;
+  urlFirebase = "https://paginapeliculas-d7a99.firebaseio.com/";
   films: Film[] = [];
   title: string;
+  email: string;
 
   constructor(private http: HttpClient, private appService: AppService) {}
 
   search(title: string): Film[] {
     this.title = title;
     this.films = [];
-    this.http.get(this.url + '&query=' + encodeURI(title) + '&language=es').subscribe(data => {
+    this.http.get(this.urlTMDB + '&query=' + encodeURI(title) + '&language=es').subscribe(data => {
       Object.values(data['results']).forEach(element => {
         const film = new Film();
         film.title = element['title'];
@@ -41,7 +43,23 @@ export class MovieService {
         this.films.push(film);
       });
     });
+    if (this.email != null) {
+      this.recoveryFilms(this.films);
+    }
     return this.films;
+   }
+
+   recoveryFilms(films: Film[]) {
+    this.http.get(this.urlFirebase + encodeURI(this.emailWithoutServerName()) + '.json?auth=' + encodeURI(this.tokenUser)).subscribe(data => {
+      Object.values(data).forEach(idFilm => {
+        for (let i = 0; i < films.length; i++) {
+          if(films[i].id === idFilm) {
+            films[i].added = true;
+          }
+        }
+      });
+    });
+    return films;
    }
 
   registroUsuario(email: string, password: string) {
@@ -60,8 +78,14 @@ export class MovieService {
           .then(
             (token: string) => {
               console.log('TOKEN:', token),
+              this.email = email;
               this.tokenUser = token;
+              /* logged in */
+              this.appService.setLogged(true);
+              /* Hide modal */
               this.appService.showAccess.next(false);
+              /* Push notification */
+              this.appService.showNotification('success', '¡Bienvenido!' + this.emailWithoutServerName());
             }
             );
           }
@@ -72,10 +96,13 @@ export class MovieService {
   }
 
   saveFilm(idFilm: string) {
-    const token = this.getToken();
-    console.log('SAVEFILM(', idFilm, ')');
-    console.log('https://paginapeliculas-d7a99.firebaseio.com/data.json?auth=' + token);
-    return this.http.put('https://paginapeliculas-d7a99.firebaseio.com/data.json?auth=' + token, idFilm);
+    this.http.post(this.urlFirebase + encodeURI(this.emailWithoutServerName()) + '/' + encodeURI(idFilm) + '.json?auth=' + encodeURI(this.tokenUser), idFilm).subscribe();
+  }
+
+  removeFilm(idFilm: string) {
+    let httpParams = new HttpParams().set('-LekJOOiVQvWzKEfApeA', '299536');
+    let options = { params: httpParams };
+    this.http.delete(this.urlFirebase + encodeURI(this.emailWithoutServerName()) + '/' + encodeURI(idFilm) + 'json?auth=' + encodeURI(this.tokenUser), options).subscribe(data => console.log(data));
   }
 
   getToken() {
@@ -88,6 +115,10 @@ export class MovieService {
     );
     firebase.auth().signOut();
     return this.tokenUser;
+  }
+
+  emailWithoutServerName() {
+    return this.email.substring(0, this.email.indexOf('@'));
   }
 }
 

@@ -10,12 +10,17 @@ import { AppService } from './service/app.service';
 export class AppComponent implements OnInit {
   title = 'MY-APP';
   showAccess = false;
+  notification: any;
 
   constructor(private appService: AppService) {}
 
   ngOnInit() {
     this.appService.showAccess.subscribe((data: boolean) => {
       this.showAccess = data;
+    });
+
+    this.appService.notification.subscribe((notification: {type: string, message: string}) => {
+      this.notification = notification;
     });
 
     firebase.initializeApp({
